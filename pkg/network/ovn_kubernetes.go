@@ -61,6 +61,14 @@ func renderOVNKubernetes(conf *operv1.NetworkSpec, manifestDir string) ([]*uns.U
 	}
 	data.Data["OVN_service_cidr"] = svcpools
 
+	if c.HybridOverlayConfig.HybridClusterNetwork != nil {
+		data.Data["OVNExtensionsCIDR"] = c.HybridOverlayConfig.HybridClusterNetwork[0].CIDR
+		data.Data["OVNExtensionsEnable"] = "true"
+	} else {
+		data.Data["OVNExtensionsCIDR"] = ""
+		data.Data["OVNExtensionsEnable"] = ""
+	}
+
 	manifests, err := render.RenderDir(filepath.Join(manifestDir, "network/ovn-kubernetes"), &data)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to render manifests")

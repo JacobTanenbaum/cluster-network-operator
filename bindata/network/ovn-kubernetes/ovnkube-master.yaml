@@ -68,6 +68,11 @@ spec:
           requests:
             cpu: 100m
             memory: 300Mi
+        env:
+        - name: OVN_EXTENSION_ENABLE
+          value: {{ .OVNExtensionsEnable }}
+        - name: OVN_EXTENSION_NET_CIDR
+          value: {{ .OVNExtensionsCIDR }}
 
       # nbdb: the northbound, or logical network object DB
       - name: nbdb
@@ -117,6 +122,11 @@ spec:
           requests:
             cpu: 100m
             memory: 300Mi
+        env:
+        - name: OVN_EXTENSION_ENABLE
+          value: {{ .OVNExtensionsEnable }}
+        - name: OVN_EXTENSION_NET_CIDR
+          value: {{ .OVNExtensionsCIDR }}
 
       # sbdb: the southbound, or flow DB
       - name: sbdb
@@ -162,6 +172,11 @@ spec:
           name: run-openvswitch
         - mountPath: /env
           name: env-overrides
+        env:
+        - name: OVN_EXTENSION_ENABLE
+          value: {{ .OVNExtensionsEnable }}
+        - name: OVN_EXTENSION_NET_CIDR
+          value: {{ .OVNExtensionsCIDR }}
 
       # ovnkube master: convert kubernetes objects in to nbdb logical network components
       - name: ovnkube-master
@@ -215,6 +230,11 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
+        - name: OVN_EXTENSION_ENABLE
+          value: {{ .OVNExtensionsEnable }}
+        - name: OVN_EXTENSION_NET_CIDR
+          value: {{ .OVNExtensionsCIDR }}
+
       nodeSelector:
         node-role.kubernetes.io/master: ""
         beta.kubernetes.io/os: "linux"
