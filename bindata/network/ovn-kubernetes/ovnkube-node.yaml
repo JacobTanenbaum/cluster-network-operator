@@ -109,6 +109,11 @@ spec:
             exec:
               command: ["/usr/share/openvswitch/scripts/ovs-ctl", "stop"]
         terminationGracePeriodSeconds: 10
+        env:
+        - name: OVN_EXTENSION_ENABLE
+          value: {{ .OVNExtensionsEnable }}
+        - name: OVN_EXTENSION_NET_CIDR
+          value: {{ .OVNExtensionsCIDR }}
 
       # ovn-controller: programs the vswitch with flows from the sbdb
       - name: ovn-controller
@@ -192,6 +197,10 @@ spec:
         env:
         - name: OVN_KUBE_LOG_LEVEL
           value: "4"
+        - name: OVN_EXTENSION_ENABLE
+          value: {{ .OVNExtensionsEnable }}
+        - name: OVN_EXTENSION_NET_CIDR
+          value: {{ .OVNExtensionsCIDR }}
         # for kubectl
         - name: KUBERNETES_SERVICE_PORT
           value: "{{.KUBERNETES_SERVICE_PORT}}"
@@ -246,6 +255,11 @@ spec:
           requests:
             cpu: 100m
             memory: 300Mi
+        env:
+        - name: OVN_EXTENSION_ENABLE
+          value: {{ .OVNExtensionsEnable }}
+        - name: OVN_EXTENSION_NET_CIDR
+          value: {{ .OVNExtensionsCIDR }}
         lifecycle:
           preStop:
             exec:
