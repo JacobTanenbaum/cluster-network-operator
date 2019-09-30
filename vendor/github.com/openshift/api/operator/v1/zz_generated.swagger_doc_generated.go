@@ -390,6 +390,14 @@ func (DefaultNetworkDefinition) SwaggerDoc() map[string]string {
 	return map_DefaultNetworkDefinition
 }
 
+var map_ExtensionConfig = map[string]string{
+	"hybridClusterNetwork": "HybridClusterNetwork defines a network space given to nodes on additional overlay network.",
+}
+
+func (ExtensionConfig) SwaggerDoc() map[string]string {
+	return map_ExtensionConfig
+}
+
 var map_IPAMConfig = map[string]string{
 	"":                 "IPAMConfig contains configurations for IPAM (IP Address Management)",
 	"type":             "Type is the type of IPAM module will be used for IP Address Management(IPAM). The supported values are IPAMTypeDHCP, IPAMTypeStatic",
@@ -451,8 +459,9 @@ func (NetworkStatus) SwaggerDoc() map[string]string {
 }
 
 var map_OVNKubernetesConfig = map[string]string{
-	"":    "ovnKubernetesConfig is the proposed configuration parameters for networks using the ovn-kubernetes network project",
-	"mtu": "mtu is the MTU to use for the tunnel interface. This must be 100 bytes smaller than the uplink mtu. Default is 1400",
+	"":                    "ovnKubernetesConfig is the proposed configuration parameters for networks using the ovn-kubernetes network project",
+	"mtu":                 "mtu is the MTU to use for the tunnel interface. This must be 100 bytes smaller than the uplink mtu. Default is 1400",
+	"hybridOverlayConfig": "HybridOverlayExtensionConfig allows us to configure an additional overlay network . if not specified it is unused",
 }
 
 func (OVNKubernetesConfig) SwaggerDoc() map[string]string {
