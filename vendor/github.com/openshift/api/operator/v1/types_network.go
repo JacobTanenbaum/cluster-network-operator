@@ -259,6 +259,14 @@ type OVNKubernetesConfig struct {
 	// bytes smaller than the uplink mtu.
 	// Default is 1400
 	MTU *uint32 `json:"mtu,omitempty"`
+	// HybridOverlayExtensionConfig allows us to configure an additional overlay network .
+	// if not specified it is unused
+	HybridOverlayConfig ExtensionConfig `json:"hybridOverlayConfig,omitempty"`
+}
+
+type ExtensionConfig struct {
+	// HybridClusterNetwork defines a network space given to nodes on additional overlay network.
+	HybridClusterNetwork []ClusterNetworkEntry `json:"hybridClusterNetwork"`
 }
 
 // NetworkType describes the network plugin type to configure
