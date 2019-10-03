@@ -61,6 +61,7 @@ func renderOVNKubernetes(conf *operv1.NetworkSpec, manifestDir string) ([]*uns.U
 	}
 	data.Data["OVN_service_cidr"] = svcpools
 
+	fmt.Printf("KEYWORD: WHYYYYY IS THIS HAPPENEING!!!\n")
 	if c.HybridOverlayConfig.HybridClusterNetwork != nil {
 		data.Data["OVNExtensionsCIDR"] = c.HybridOverlayConfig.HybridClusterNetwork[0].CIDR
 		data.Data["OVNExtensionsEnable"] = "true"
