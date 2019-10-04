@@ -70,7 +70,7 @@ spec:
             memory: 300Mi
         env:
         - name: OVN_EXTENSION_ENABLE
-          value: {{ .OVNExtensionsEnable }}
+          value: "{{ .OVNExtensionsEnable }}"
         - name: OVN_EXTENSION_NET_CIDR
           value: "{{ .OVNExtensionsCIDR }}"
 
@@ -124,7 +124,7 @@ spec:
             memory: 300Mi
         env:
         - name: OVN_EXTENSION_ENABLE
-          value: {{ .OVNExtensionsEnable }}
+          value: "{{ .OVNExtensionsEnable }}"
         - name: OVN_EXTENSION_NET_CIDR
           value: "{{ .OVNExtensionsCIDR }}"
 
@@ -174,7 +174,7 @@ spec:
           name: env-overrides
         env:
         - name: OVN_EXTENSION_ENABLE
-          value: {{ .OVNExtensionsEnable }}
+          value: "{{ .OVNExtensionsEnable }}"
         - name: OVN_EXTENSION_NET_CIDR
           value: "{{ .OVNExtensionsCIDR }}"
 
@@ -231,7 +231,7 @@ spec:
             fieldRef:
               fieldPath: spec.nodeName
         - name: OVN_EXTENSION_ENABLE
-          value: {{ .OVNExtensionsEnable }}
+          value: "{{ .OVNExtensionsEnable }}"
         - name: OVN_EXTENSION_NET_CIDR
           value: "{{ .OVNExtensionsCIDR }}"
 
