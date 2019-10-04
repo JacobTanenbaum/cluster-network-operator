@@ -203,7 +203,7 @@ spec:
             --nodeport --gateway-mode local \
             ${hybrid_overlay_flags} \
             --pidfile /var/run/openvswitch/ovnkube-node.pid \
-            --loglevel "${OVN_KUBE_LOG_LEVEL}" --logfile /dev/stdout
+            --loglevel 4  --logfile /dev/stdout
         env:
         - name: OVN_KUBE_LOG_LEVEL
           value: "4"
