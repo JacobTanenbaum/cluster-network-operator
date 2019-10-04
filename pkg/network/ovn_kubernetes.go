@@ -119,7 +119,8 @@ func isOVNKubernetesChangeSafe(prev, next *operv1.NetworkSpec) []error {
 	//	if reflect.DeepEqual(pn, nn) {
 	//		return []error{}
 	//	}
-	return []error{errors.Errorf("cannot change ovn-kubernetes configuration")}
+	//return []error{errors.Errorf("cannot change ovn-kubernetes configuration")}
+	return errs
 }
 
 func fillOVNKubernetesDefaults(conf, previous *operv1.NetworkSpec, hostMTU int) {
