@@ -183,6 +183,16 @@ spec:
             echo "waiting for db endpoint"
             sleep 5
           done
+
+          hybrid_overlay_flags=
+          if [[ -n "{{.OVNExtensionsEnable}}" ]]; then
+            hybrid_overlay_flags="--enable-hybrid-overlay"
+            if [[ -n "{{.OVNExtensionsCIDR}}" ]]; then
+              hybrid_overlay_flags="${hybrid_overlay_flags} --hybrid-overlay-cluster-subnets={{.OVNExtensionsCIDR}}"
+            fi
+          fi
+
+
           exec /usr/bin/ovnkube --init-node "${K8S_NODE}" \
             --cluster-subnets "${OVN_NET_CIDR}" \
             --k8s-service-cidr "${OVN_SVC_CIDR}" \
@@ -191,6 +201,7 @@ spec:
             --nb-address "tcp://${db_ip}:{{.OVN_NB_PORT}}" \
             --sb-address "tcp://${db_ip}:{{.OVN_SB_PORT}}" \
             --nodeport --gateway-mode local \
+            ${hybrid_overlay_flags} \
             --pidfile /var/run/openvswitch/ovnkube-node.pid \
             --loglevel "${OVN_KUBE_LOG_LEVEL}" --logfile /dev/stdout
         env:
