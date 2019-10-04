@@ -72,7 +72,7 @@ spec:
         - name: OVN_EXTENSION_ENABLE
           value: {{ .OVNExtensionsEnable }}
         - name: OVN_EXTENSION_NET_CIDR
-          value: {{ .OVNExtensionsCIDR }}
+          value: "{{ .OVNExtensionsCIDR }}"
 
       # nbdb: the northbound, or logical network object DB
       - name: nbdb
@@ -126,7 +126,7 @@ spec:
         - name: OVN_EXTENSION_ENABLE
           value: {{ .OVNExtensionsEnable }}
         - name: OVN_EXTENSION_NET_CIDR
-          value: {{ .OVNExtensionsCIDR }}
+          value: "{{ .OVNExtensionsCIDR }}"
 
       # sbdb: the southbound, or flow DB
       - name: sbdb
@@ -176,7 +176,7 @@ spec:
         - name: OVN_EXTENSION_ENABLE
           value: {{ .OVNExtensionsEnable }}
         - name: OVN_EXTENSION_NET_CIDR
-          value: {{ .OVNExtensionsCIDR }}
+          value: "{{ .OVNExtensionsCIDR }}"
 
       # ovnkube master: convert kubernetes objects in to nbdb logical network components
       - name: ovnkube-master
@@ -233,7 +233,7 @@ spec:
         - name: OVN_EXTENSION_ENABLE
           value: {{ .OVNExtensionsEnable }}
         - name: OVN_EXTENSION_NET_CIDR
-          value: {{ .OVNExtensionsCIDR }}
+          value: "{{ .OVNExtensionsCIDR }}"
 
       nodeSelector:
         node-role.kubernetes.io/master: ""
