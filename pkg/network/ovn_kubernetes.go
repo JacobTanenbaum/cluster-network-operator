@@ -108,8 +108,8 @@ func isOVNKubernetesChangeSafe(prev, next *operv1.NetworkSpec) []error {
 	nn := next.DefaultNetwork.OVNKubernetesConfig
 	errs := []error{}
 
-	if pn.MTU != nn.MTU {
-		errs = append(errs, errors.Errorf("cannot change ovn-kubernetes MTU %d %d", pn.MTU, nn.MTU))
+	if !reflect.DeepEqual(pn.MTU, nn.MTU) {
+		errs = append(errs, errors.Errorf("cannot change ovn-kubernetes MTU"))
 	}
 	if pn.HybridOverlayConfig.HybridClusterNetwork != nil {
 		if !reflect.DeepEqual(pn.HybridOverlayConfig, nn.HybridOverlayConfig) {
