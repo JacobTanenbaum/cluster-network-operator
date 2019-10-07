@@ -265,11 +265,6 @@ spec:
           requests:
             cpu: 100m
             memory: 300Mi
-        env:
-        - name: OVN_EXTENSION_ENABLE
-          value: "{{ .OVNExtensionsEnable }}"
-        - name: OVN_EXTENSION_NET_CIDR
-          value: "{{ .OVNExtensionsCIDR }}"
         lifecycle:
           preStop:
             exec:
