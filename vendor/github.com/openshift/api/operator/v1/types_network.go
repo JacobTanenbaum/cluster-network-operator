@@ -272,6 +272,15 @@ type OVNKubernetesConfig struct {
 	// +kubebuilder:validation:Minimum=1
 	// +optional
 	GenevePort *uint32 `json:"genevePort,omitempty"`
+	// HybridOverlayExtensionConfig allows us to configure an additional overlay network .
+	// if not specified it is unused
+	// +optional
+	HybridOverlayConfig *ExtensionConfig `json:"hybridOverlayConfig,omitempty"`
+}
+
+type ExtensionConfig struct {
+	// HybridClusterNetwork defines a network space given to nodes on additional overlay network.
+	HybridClusterNetwork []ClusterNetworkEntry `json:"hybridClusterNetwork"`
 }
 
 // NetworkType describes the network plugin type to configure
