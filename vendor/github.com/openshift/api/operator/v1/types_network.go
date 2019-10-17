@@ -261,7 +261,7 @@ type OVNKubernetesConfig struct {
 	MTU *uint32 `json:"mtu,omitempty"`
 	// HybridOverlayExtensionConfig allows us to configure an additional overlay network .
 	// if not specified it is unused
-	HybridOverlayConfig ExtensionConfig `json:"hybridOverlayConfig,omitempty"`
+	HybridOverlayConfig *ExtensionConfig `json:"hybridOverlayConfig,omitempty"`
 }
 
 type ExtensionConfig struct {

@@ -1307,7 +1307,12 @@ func (in *OVNKubernetesConfig) DeepCopyInto(out *OVNKubernetesConfig) {
 		*out = new(uint32)
 		**out = **in
 	}
-	in.HybridOverlayConfig.DeepCopyInto(&out.HybridOverlayConfig)
+	if in.HybridOverlayConfig != nil {
+		in, out := &in.HybridOverlayConfig, &out.HybridOverlayConfig
+		*out = new(ExtensionConfig)
+		(*in).DeepCopyInto(*out)
+	}
+
 	return
 }
 
